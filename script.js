@@ -1,11 +1,17 @@
-// Nayron Digital — Standalone JS
+// Linka Digital — Standalone JS
+
+// Inicializa Tema Claro/Escuro
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme === "light") {
+  document.body.classList.add("light-theme");
+}
 
 // ⬇️ ATUALIZE ESTES DOIS VALORES ⬇️
-const WHATSAPP_NUMBER = "5500000000000"; // formato: 55 + DDD + número
-const INSTAGRAM_HANDLE = "nayron.digital";
+const WHATSAPP_NUMBER = "5531999331297"; // formato: 55 + DDD + número
+const INSTAGRAM_HANDLE = "linkastudio.br"; // sem @
 
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  "Olá Nayron! Vim pelo seu site e quero um orçamento."
+  "Olá! Vim pelo site da Linka Digital e gostaria de fazer um orçamento."
 )}`;
 const INSTAGRAM_LINK = `https://instagram.com/${INSTAGRAM_HANDLE}`;
 
@@ -46,3 +52,13 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+// Controle do Botão de Alternância de Tema
+const themeToggle = document.getElementById("themeToggle");
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light-theme");
+    const isLight = document.body.classList.contains("light-theme");
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+  });
+}
